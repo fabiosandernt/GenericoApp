@@ -9,6 +9,8 @@
   <ItemGroup>
     <Folder Include="Account\" />
     <Folder Include="Client\" />
+    <Folder Include="FolhaPagamento\ValueObjects\" />
+    <Folder Include="FolhaPagamento\Rules\" />
   </ItemGroup>
 
 </Project>

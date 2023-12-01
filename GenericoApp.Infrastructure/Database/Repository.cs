@@ -1,70 +1,64 @@
 ﻿using GenericoApp.Domain.Base;
+using GenericoApp.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenericoApp.Infrastructure.Database
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected DbSet<T> Query;
-        protected DbContext Context;
 
-        public Repository(DbContext context)
+        protected DbSet<T> Query { get; set; }
+        protected DbContext Context { get; set; }
+
+        public Repository(ApplicationDbContext context)
         {
-            this.Context = context;
-            this.Query = context.Set<T>();
+            this.Query = Context.Set<T>();
+            this.Context = context;            
         }
 
-        public ValueTask<bool> AnyAsync(Expression<Func<T, bool>> expression)
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await Query.AnyAsync(expression);
         }
 
-        public Task Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+            Query.Remove(entity);
+            await Context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<T>> FindAllByCriterio(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> FindAllByCriterio(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await Query.Where(expression).ToListAsync();
         }
 
-        public Task<T> FindOneByCriterio(Expression<Func<T, bool>> expression)
+        public async Task<T> FindOneByCriterio(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await Query.Where(expression).FirstOrDefaultAsync();
         }
 
-        public Task<T> Get(object id)
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+           return await Query.ToListAsync();
+        }
+           
+
+        public async Task<T> GetByIdAsync(object id)
+        {
+           return await Query.FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task SaveAsync(T entity)
         {
-            return await this.Query.ToListAsync();
+            await Query.AddAsync(entity);
+            await Context.SaveChangesAsync();
         }
 
-        public ValueTask<T> GetbyExpressionAsync(Expression<Func<T, bool>> expression)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            Query.Update(entity);
+            await Context.SaveChangesAsync();
         }
-
-        public async Task Save(T entity)
-        {
-           await this.Query.AddAsync(entity);
-           await this.Context.SaveChangesAsync();
-        }
-
-        public Task Update(T entity)
-        {
-            throw new NotImplementedException();
-        }
-    }    
+    }
 }
