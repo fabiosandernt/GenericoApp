@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericoApp.Application", "GenericoApp.Application\GenericoApp.Application.csproj", "{0A4BECE3-9162-4BEE-9D94-1F865EA5E788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericoApp.Application", "GenericoApp.Application\GenericoApp.Application.csproj", "{0A4BECE3-9162-4BEE-9D94-1F865EA5E788}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2FB3728C-FA77-4E53-851D-E5880C10BBE9} = {2FB3728C-FA77-4E53-851D-E5880C10BBE9}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericoApp.Domain", "GenericoApp.Domain\GenericoApp.Domain.csproj", "{A00ECBE7-9ABB-472A-B9B8-4233A22263E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericoApp.Domain", "GenericoApp.Domain\GenericoApp.Domain.csproj", "{A00ECBE7-9ABB-472A-B9B8-4233A22263E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericoApp.Infrastructure", "GenericoApp.Infrastructure\GenericoApp.Infrastructure.csproj", "{2FB3728C-FA77-4E53-851D-E5880C10BBE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericoApp.Infrastructure", "GenericoApp.Infrastructure\GenericoApp.Infrastructure.csproj", "{2FB3728C-FA77-4E53-851D-E5880C10BBE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericoApp.Api", "GenericoApp.Api\GenericoApp.Api.csproj", "{A8B9BF47-5722-48B4-8A3C-107CAA705633}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericoApp.Api", "GenericoApp.Api\GenericoApp.Api.csproj", "{A8B9BF47-5722-48B4-8A3C-107CAA705633}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0A4BECE3-9162-4BEE-9D94-1F865EA5E788} = {0A4BECE3-9162-4BEE-9D94-1F865EA5E788}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

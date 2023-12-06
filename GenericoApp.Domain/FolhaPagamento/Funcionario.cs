@@ -14,6 +14,18 @@ namespace GenericoApp.Domain.FolhaPagamento
         public Guid EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
 
+        //create funcionario
+        public void Create(string nome, string cpf, DateTime dataNascimento, DateTime dataAdmissao, decimal salario, Guid empresaId)
+        {
+            Nome = nome;
+            Cpf = cpf;
+            DataNascimento = dataNascimento;
+            DataAdmissao = dataAdmissao;
+            Salario = salario;
+            EmpresaId = empresaId;
+            Ativo = true;
+        }
+
         protected Funcionario()
         {
                 

@@ -1,7 +1,8 @@
 ﻿
 namespace GenericoApp.Domain.FolhaPagamento.Repository
 {
-    public class IFolhaPagamentoRepository
-    {
+    public interface IFolhaPagamentoRepository
+    {        
+        Task<string> CalculaSalarioLiquido(Guid idFuncionario);
     }
 }
