@@ -1,4 +1,5 @@
 ﻿using GenericoApp.Domain.Base;
+using GenericoApp.Domain.Base.ValueObjects;
 
 namespace GenericoApp.Domain.FolhaPagamento
 {
@@ -13,6 +14,7 @@ namespace GenericoApp.Domain.FolhaPagamento
         public bool Ativo { get; set; }
         public Guid EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
+        public Endereco Endereco { get; set; }
 
         //create funcionario
         public void Create(string nome, string cpf, DateTime dataNascimento, DateTime dataAdmissao, decimal salario, Guid empresaId)
